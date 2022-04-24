@@ -32,3 +32,9 @@ def save(animal):
     result = run_sql(sql, values)
     id = result[0]["id"]
     animal.id = id
+
+# Delete all animals in database 
+def delete_all():
+    sql = "DELETE FROM animals"
+    run_sql(sql)
+

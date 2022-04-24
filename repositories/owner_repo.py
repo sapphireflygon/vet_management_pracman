@@ -17,3 +17,8 @@ def select(id):
     owner = Owner(result["name"], result["phone_number"], result["email"], result["address"], result["id"])
     return owner
 
+# Delete all owners from database
+def delete_all():
+    sql = "DELETE FROM owners"
+    run_sql(sql)
+

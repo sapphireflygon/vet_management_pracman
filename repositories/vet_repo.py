@@ -11,7 +11,6 @@ def select_all():
         vets.append(vet)
     return vets
 
-
 # Find one vet in database
 def select(id):
     sql = "SELECT * FROM vets WHERE id = %s"
@@ -20,7 +19,6 @@ def select(id):
     vet = Vet(result["name"], result["id"])
     return vet
 
-
 # Create new vet in database
 def save(vet):
     sql = "INSERT INTO vets (name) VALUES (%s) RETURNING id"
@@ -28,3 +26,9 @@ def save(vet):
     result = run_sql(sql, values)
     id = result[0]["id"]
     vet.id = id
+
+# Delete all vets in database
+def delete_all():
+    sql = "DELETE FROM vets"
+    run_sql(sql)
+

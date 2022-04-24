@@ -9,6 +9,11 @@ import repositories.owner_repo as owner_repo
 from models.vet import Vet
 import repositories.vet_repo as vet_repo
 
+
+animal_repo.delete_all()
+owner_repo.delete_all()
+vet_repo.delete_all()
+
 vet1 = Vet("Hershel Green")
 vet_repo.save(vet1)
 vet2 = Vet("Doctor Doolittle")
