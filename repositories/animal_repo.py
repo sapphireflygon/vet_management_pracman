@@ -25,3 +25,11 @@ def select(id):
     vet = vet_repo.select(result["vet_id"])
     animal = Animal(result["id"], result["species"], result["name"], result["date_of_birth"], owner, vet, result["treatment_notes"])
     return animal
+
+# Create new animal in database
+def save(animal):
+    sql = "INSERT INTO animals (name, species, date_of_birth, owner_id, vet_id, treatment_notes) VALUES (%s, %s, %s, %s, %s, %s)RETURNING id"
+    values = [animal.name, animal.species, animal.date_of_birth, animal.owner.id, animal.vet.id, animal.treatment_notes]
+    result = run_sql(sql, values)
+    animal.id = result[0]["id"]
+    return animal

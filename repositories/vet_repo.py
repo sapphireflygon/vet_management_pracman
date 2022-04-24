@@ -20,3 +20,11 @@ def select(id):
     result = run_sql(sql, values)
     vet = Vet(result["id"], result["name"])
     return vet
+
+
+# Create new vet in database
+def save(vet):
+    sql = "INSERT INTO vets (name) VALUES (%s) RETURNING id"
+    values = [vet.name]
+    result = run_sql(sql, values)
+    vet.id = result[0]["id"]
