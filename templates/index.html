@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Practice Manager</title>
 </head>
 <body>
-    <!-- main homepage displayed at app.route('/') -->
+    <header>
+        <h1 id="main-logo">Vet Practice Manager</h1>
+    </header>
+    <section class="main-buttons">
+        <form action="/vets" method="POST">
+            <input id="main-vets" type="submit" value="Manage Vets">
+        </form>
+        <form action="/animals" method="POST">
+            <input id="main-animals" type="submit" value="Manage Animals">
+        </form>
+        <form action="/owners" method="POST">
+            <input id="main-owners" type="submit" value="Manage Owners">
+        </form>
+    </section>
 </body>
 </html>
