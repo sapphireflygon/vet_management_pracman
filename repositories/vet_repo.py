@@ -1,4 +1,3 @@
-from unittest import result
 from db.run_sql import run_sql
 from models.vet import Vet
 
@@ -8,7 +7,7 @@ def select_all():
     sql = "SELECT * FROM vets"
     results = run_sql(sql)
     for result in results:
-        vet = Vet(result["id"], result["name"])
+        vet = Vet(result["name"], result["id"])
         vets.append(vet)
     return vets
 
@@ -17,8 +16,8 @@ def select_all():
 def select(id):
     sql = "SELECT * FROM vets WHERE id = %s"
     values = [id]
-    result = run_sql(sql, values)
-    vet = Vet(result["id"], result["name"])
+    result = run_sql(sql, values)[0]
+    vet = Vet(result["name"], result["id"])
     return vet
 
 
@@ -27,4 +26,5 @@ def save(vet):
     sql = "INSERT INTO vets (name) VALUES (%s) RETURNING id"
     values = [vet.name]
     result = run_sql(sql, values)
-    vet.id = result[0]["id"]
+    id = result[0]["id"]
+    vet.id = id

@@ -6,6 +6,14 @@ def save(owner):
     sql = "INSERT INTO owners (name, phone_number, email, address) VALUES (%s, %s, %s, %s) RETURNING id"
     values = [owner.name, owner.phone_number, owner.email, owner.address]
     result = run_sql(sql, values)
-    owner.id = result[0]["id"]
+    id = result[0]["id"]
+    owner.id = id
+
+# Find owner in database
+def select(id):
+    sql = "SELECT * FROM owners WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    owner = Owner(result["name"], result["phone_number"], result["email"], result["address"], result["id"])
     return owner
 

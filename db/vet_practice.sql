@@ -12,7 +12,7 @@ CREATE TABLE owners (
     name VARCHAR(255),
     phone_number INT NOT NULL,
     email VARCHAR(255),
-    address VARCHAR(255),
+    address VARCHAR(255)
 );
 
 CREATE TABLE animals (

@@ -1,4 +1,4 @@
 class Vet:
-    def __init__(self, id=None, input_name):
+    def __init__(self, input_name, id=None):
         self.id = id
         self.name = input_name
