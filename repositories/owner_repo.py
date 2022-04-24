@@ -9,6 +9,16 @@ def save(owner):
     id = result[0]["id"]
     owner.id = id
 
+# List all owners in database
+def select_all():
+    owners = []
+    sql = "SELECT * FROM owners"
+    results = run_sql(sql)
+    for result in results:
+        owner = Owner(result["name"], result["phone_number"], result["email"], result["address"], result["id"])
+        owners.append(owner)
+    return owners
+
 # Find owner in database
 def select(id):
     sql = "SELECT * FROM owners WHERE id = %s"

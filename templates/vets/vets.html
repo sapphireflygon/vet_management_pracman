@@ -2,6 +2,17 @@
 
 {% block content %}
 
-<!-- vets main page -->
+<h2 id="vets-logo">All Vets</h2>
+
+{% for vet in vets %}
+<section class="vets">
+    <p>Dr. {{ vet.name }}</p>
+    <p id="all-animals-for-vet">
+    <!-- put link to list of all animals assigned to this vet here if possible -->
+    </p>
+    <!-- add in link to edit each vet here -->
+    <!-- add in button to delete vet here -->
+</section>
+{% endfor %}
 
 {% endblock %}

@@ -16,7 +16,7 @@ vet_repo.delete_all()
 
 vet1 = Vet("Hershel Green")
 vet_repo.save(vet1)
-vet2 = Vet("Doctor Doolittle")
+vet2 = Vet("John Doolittle")
 vet_repo.save(vet2)
 
 owner1 = Owner("Bob and Laura Seaver", 119308939, "homeward_bound@email.com", "343 Big Bear Road")
@@ -35,10 +35,10 @@ animal_repo.save(animal4)
 
 vet_repo.select_all()
 animal_repo.select_all()
+owner_repo.select_all()
 
 vet_repo.select(vet1.id)
 owner_repo.select(owner2.id)
 animal_repo.select(animal3.id)
-
 
 # pdb.set_trace()
