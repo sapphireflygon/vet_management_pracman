@@ -2,6 +2,34 @@
 
 {% block content %}
 
-<!-- show all details for specific animal here -->
+<div>
+    <p class="animal-name">
+        <h2>{{ animal.name }}</h2>
+    </p>
+    <p>Species: {{ animal.species|title }}</p>
+    <p>Date of Birth: {{ animal.date_of_birth }}</p>
+    <p><a href="/animals/{{ animal.id }}/edit"><button class="edit-button">Edit Animal Details</button></a></p><hr>
+    <p>
+        <h3>Owner: {{ animal.owner.name }}</h3>
+        <h3>Contact Details:</h3>
+            Phone Number: {{ animal.owner.phone_number }} <br>
+            Email: {{ animal.owner.email }} <br>
+            Address: {{ animal.owner.address }} <br>
+        <a href="/owners/{{ animal.owner.id }}/edit"><button class="edit-button">Edit Owner Details</button></a>
+    </p>
+    <hr>
+    <form action="/animals/{{ animal.id }}/delete" method="POST">
+        <input type="submit" value="Delete Animal">
+    </form>
+    <hr>
+    <p>
+        <h3>Vet: Dr. {{ animal.vet.name }}</h3>
+    </p>
+    <p><h3>Treatment Notes:</h3>
+        <!-- add in button to go to new page and write new treatment note and reroute back to this page if possible -->
+        {{ animal.treatment_notes }}
+    </p>
+</div>
+
 
 {% endblock %}

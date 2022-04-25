@@ -11,14 +11,9 @@
     <p>Name: {{ animal.name }}</p>
     <p>Species: {{ animal.species|title }}</p> <!-- COOL CODE THING I LEARNED DOING THIS: the |title will capitalise the first letter in the str variable on this display -->
     <p>Owner: {{ animal.owner.name }}
-        <!-- link to owner details here -->
     </p>
     <p>Vet: Dr. {{ animal.vet.name }}</p>
-    <!-- add in form-submit button to link to show page that shows animal details, put edit and delete buttons there -->
-    <a href="/animals/{{ animal.id }}/edit"><button class="edit-button">Edit Animal Details</button></a>
-    <form action="/animals/{{ animal.id }}/delete" method="POST">
-        <input type="submit" value="Delete Animal">
-    </form>
+    <a href="/animals/{{ animal.id }}"><button class="show-button">Show Details</button></a>
     <hr>
 </section>
 {% endfor %}

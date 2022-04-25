@@ -12,7 +12,7 @@
         {% for animal in assigned_animals %}
             Name: {{ animal.name }} <br>
             Species: {{ animal.species|title }}
-            <!-- VIEW ANIMAL DETAILS BUTTON HERE -->
+            <a href="/animals/{{ animal.id }}"><button class="show-button">View Animal's Details</button></a>
             <!-- button to unassign animal from vet if possible?? -->
             <hr>
         {% endfor %}

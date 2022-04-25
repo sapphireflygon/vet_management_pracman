@@ -56,10 +56,16 @@ def update_animal(id):
     vet = vet_repo.select(vet_id)
     animal = Animal(name, species, date_of_birth, owner, vet, id)
     animal_repo.update(animal)
-    return redirect("/animals") # change redirect to show page???
+    return redirect("/animals")
 
 # Delete animal from system
 @animals_blueprint.route("/animals/<id>/delete", methods=["POST"])
 def delete_animal(id):
     animal_repo.delete(id)
     return redirect("/animals")
+
+# Show details of one animal --> show.html
+@animals_blueprint.route("/animals/<id>")
+def show_animal(id):
+    animal = animal_repo.select(id)
+    return render_template("/animals/show.html", animal=animal)

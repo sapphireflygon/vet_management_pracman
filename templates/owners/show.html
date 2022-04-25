@@ -18,7 +18,7 @@
         {% for animal in animals_owned %}
             Name: {{ animal.name }} <br>
             Species: {{ animal.species|title }}
-            <!-- VIEW ANIMAL DETAILS BUTTON HERE -->
+            <a href="/animals/{{ animal.id }}"><button class="show-button">View Animal's Details</button></a>
             <hr>
         {% endfor %}
     <a href="/animals/new"><button class="new-animal-button">Add New Animal</button></a>
