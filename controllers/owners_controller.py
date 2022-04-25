@@ -26,3 +26,26 @@ def create_owner():
     new_owner = Owner(name, phone_number, email, address)
     owner_repo.save(new_owner)
     return redirect("/owners")
+
+# Edit owner's details
+@owners_blueprint.route("/owners/<id>/edit")
+def edit_owner(id):
+    owner = owner_repo.select(id)
+    return render_template("/owners/edit.html", owner=owner)
+
+# Update owner's details after editing
+@owners_blueprint.route("/owners/<id>", methods=["POST"])
+def update_owner(id):
+    name = request.form["name"]
+    phone_number = request.form["phone_number"]
+    email = request.form["email"]
+    address = request.form["address"]
+    owner = Owner(name, phone_number, email, address, id)
+    owner_repo.update(owner)
+    return redirect("/owners")
+
+# Delete owner from system
+@owners_blueprint.route("/owners/<id>/delete", methods=["POST"])
+def delete_owner(id):
+    owner_repo.delete(id)
+    return redirect("/owners")

@@ -34,3 +34,32 @@ def create_animal():
     new_animal = Animal(name, species, date_of_birth, owner, vet)
     animal_repo.save(new_animal)
     return redirect("/animals")
+
+# Edit animal's details
+@animals_blueprint.route("/animals/<id>/edit")
+def edit_animal(id):
+    animal = animal_repo.select(id)
+    vets = vet_repo.select_all()
+    owners = owner_repo.select_all()
+    return render_template("/animals/edit.html", animal=animal, vets=vets, owners=owners)
+
+# Update animal's details after editing
+@animals_blueprint.route("/animals/<id>", methods=["POST"])
+def update_animal(id):
+    name = request.form["name"]
+    species = request.form["species"]
+    date_of_birth = str(request.form["date_of_birth"])
+    print(date_of_birth)
+    owner_id = request.form["owner_id"]
+    owner = owner_repo.select(owner_id)
+    vet_id = request.form["vet_id"]
+    vet = vet_repo.select(vet_id)
+    animal = Animal(name, species, date_of_birth, owner, vet, id)
+    animal_repo.update(animal)
+    return redirect("/animals") # change redirect to show page???
+
+# Delete animal from system
+@animals_blueprint.route("/animals/<id>/delete", methods=["POST"])
+def delete_animal(id):
+    animal_repo.delete(id)
+    return redirect("/animals")

@@ -35,9 +35,9 @@ animal_repo.save(animal3)
 animal4 = Animal("Abed", "reptile", "01-04-2020", owner2, vet2)
 animal_repo.save(animal4)
 
-animal_repo.delete(animal2.id)
-owner_repo.delete(owner2.id)
-vet_repo.delete(vet3.id)
+# animal_repo.delete(animal2.id)
+# owner_repo.delete(owner2.id)
+# vet_repo.delete(vet3.id)
 
 # vet_repo.select_all()
 # animal_repo.select_all()

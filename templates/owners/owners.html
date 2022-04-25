@@ -12,8 +12,10 @@
     <p id="all-animals-for-owner">
         <!-- list all animals with owner_id == owner.id here if possible -->
     </p>
-    <!-- add in link to edit each owner here -->
-    <!-- add in button to delete owner here -->
+    <a href="/owners/{{ owner.id }}/edit"><button class="edit-button">Edit Owner Details</button></a>
+    <form action="/owners/{{ owner.id }}/delete" method="POST">
+        <input type="submit" value="Delete Owner">
+    </form>
     <hr>
 </section>
 {% endfor %}

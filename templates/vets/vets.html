@@ -12,8 +12,10 @@
     <p id="all-animals-for-vet">
     <!-- put link to list of all animals assigned to this vet here if possible -->
     </p>
-    <!-- add in link to edit each vet here -->
-    <!-- add in button to delete vet here -->
+    <a href="/vets/{{ vet.id }}/edit"><button class="edit-button">Edit</button></a>
+    <form action="/vets/{{ vet.id }}/delete" method="POST">
+        <input type="submit" value="Delete Vet">
+    </form>
     <hr>
 </section>
 {% endfor %}

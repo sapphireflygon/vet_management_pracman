@@ -24,4 +24,22 @@ def create_vet():
     vet_repo.save(new_vet)
     return redirect("/vets")
 
+# Edit vet's details
+@vets_blueprint.route("/vets/<id>/edit")
+def edit_vet(id):
+    vet = vet_repo.select(id)
+    return render_template("/vets/edit.html", vet=vet)
 
+# Update vet's details after editing
+@vets_blueprint.route("/vets/<id>", methods=["POST"])
+def update_vet(id):
+    name = request.form["name"]
+    vet = Vet(name, id)
+    vet_repo.update(vet)
+    return redirect("/vets")
+
+# Delete vet from system
+@vets_blueprint.route("/vets/<id>/delete", methods=["POST"])
+def delete_vet(id):
+    vet_repo.delete(id)
+    return redirect("/vets")
