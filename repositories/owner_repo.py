@@ -1,5 +1,7 @@
 from db.run_sql import run_sql
 from models.owner import Owner
+from models.animal import Animal
+import repositories.vet_repo as vet_repo
 
 # Create new owner in database
 def save(owner):
@@ -43,3 +45,19 @@ def update(owner):
     sql = "UPDATE owners SET (name, email, phone_number, address) = (%s, %s, %s, %s) WHERE id=%s"
     values = [owner.name, owner.email, owner.phone_number, owner.address, owner.id]
     run_sql(sql, values)
+
+# List of all pets owned by specific owner
+def all_animals_owned_by_owner(owner):
+    animals = []
+    sql = "SELECT animals.* FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE owners.id = %s"
+    values = [owner.id]
+    results = run_sql(sql, values)
+    print(results)
+
+    for result in results:
+        print(result)
+        vet = vet_repo.select(result["vet_id"])
+        print(vet)
+        animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, None, result["id"])
+        animals.append(animal)
+    return animals

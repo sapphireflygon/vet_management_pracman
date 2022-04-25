@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <p class="owner-name">
+        {{ owner.name }}
+    </p>
+    <p>Contact Details: <br>
+        Phone Number: {{ owner.phone_number }} <br>
+        Email: {{ owner.email }} <br>
+        Address: {{ owner.address }} <br>
+    </p>
+    <a href="/owners/{{ owner.id }}/edit"><button class="edit-button">Edit Owner Details</button></a>
+    <p>
+        Registered Animals: <br>
+        {% for animal in animals_owned %}
+            Name: {{ animal.name }} <br>
+            Species: {{ animal.species|title }}
+            <!-- VIEW ANIMAL DETAILS BUTTON HERE -->
+            <hr>
+        {% endfor %}
+    <a href="/animals/new"><button class="new-animal-button">Add New Animal</button></a>
+    </p>
+    <form action="/owners/{{ owner.id }}/delete" method="POST">
+        <input type="submit" value="Delete Owner">
+    </form>
+</div>
+
+{% endblock %}

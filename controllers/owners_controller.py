@@ -27,7 +27,7 @@ def create_owner():
     owner_repo.save(new_owner)
     return redirect("/owners")
 
-# Edit owner's details
+# Edit owner's details --> edit.html
 @owners_blueprint.route("/owners/<id>/edit")
 def edit_owner(id):
     owner = owner_repo.select(id)
@@ -49,3 +49,10 @@ def update_owner(id):
 def delete_owner(id):
     owner_repo.delete(id)
     return redirect("/owners")
+
+# Show details of one owner --> show.html
+@owners_blueprint.route("/owners/<id>")
+def show_owner(id):
+    owner = owner_repo.select(id)
+    animals_owned = owner_repo.all_animals_owned_by_owner(owner)
+    return render_template("/owners/show.html", owner=owner, animals_owned=animals_owned)
