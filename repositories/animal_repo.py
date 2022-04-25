@@ -49,3 +49,12 @@ def update(animal):
     sql = "UPDATE animals SET (name, species, date_of_birth, owner, vet) = (%s, %s, %s, %s, %s) WHERE id=%s"
     values = [animal.name, animal.species, animal.date_of_birth, animal.owner.id, animal.vet.id]
     run_sql(sql, values)
+
+# Add treatment note to animal
+# def add_treatment(animal, date, treatment):
+#     sql = "UPDATE animals SET treatment_notes = %s WHERE id=%s"
+    
+#     values = [animal.treatment_notes, animal.id]
+#     run_sql(sql, values)
+    
+    # might be getting lost here... unsure if afctually need this fx... look at notes in animals_controlleer.py.....

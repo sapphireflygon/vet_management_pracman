@@ -69,3 +69,20 @@ def delete_animal(id):
 def show_animal(id):
     animal = animal_repo.select(id)
     return render_template("/animals/show.html", animal=animal)
+
+# Create new treatment note --> add_treatment_notes.html
+@animals_blueprint.route("/animals/<id>/notes")
+def new_treatment_note(id):
+    animal = animal_repo.select(id)
+    date = request.form["date_of_treatment"]
+    treatment = request.form["treatment_note"]
+    animal.treatment_notes = {str(date):treatment}
+    # animal_repo.add_treatment(animal, date, treatment) # do we need this here??? 
+    return render_template("/animals/add_treatment_notes.html", animal=animal, date=date, treatment=treatment)
+    # might be getting lost between here and fx in animal_repo...
+# Form has date input, and large text box to write treatment note; want to save these as dict key and value respectively; then update them to the animal.treatment_notes dictionary; then want to display each key:value pair in order (descending? so newest entry shows at top of treatment notes section of show page for animal); maybe have separate page to view all treatment notes if routes get funky???
+
+# Update treatment notes on animal page --> redirect to
+    # return redirect("/animals/<id>", animal=animal, date=date, treatment=treatment)
+# Maybe need to create new page to view all treatments to avoid routes clashing??? ie weird if routing to /animals/<id> in multiple @blueprint functions????
+

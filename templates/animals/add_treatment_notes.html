@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ animal.name }}</h2>
+<h3>New Treatment Note:</h3>
+<form action="/animals/{{ animal.id }}" method="POST">
+    <div>
+        <label for="date">Date: </label>
+        <input type="date" name="date" min="2022-04-25" max="2022-04-28" required> <!-- hardcoded dates here within a few days because can't make dynamic due to constraints of project (can't use JavaScript)-->
+    </div>
+    <div>
+        <label for="treatment">Notes: </label>
+        <input type="text" id="treatment" name="treatment" placeholder="Write treatment notes here." required>
+    </div>
+</form>
+
+{% endblock %}
