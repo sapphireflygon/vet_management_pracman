@@ -9,11 +9,9 @@
 {% for owner in owners %}
 <section class="owners">
     <p>{{ owner.name }}</p>
-    <p id="all-animals-for-owner">
-        <!-- list all animals with owner_id == owner.id here if possible -->
-    </p>
+    <p>
     <a href="/owners/{{ owner.id }}"><button class="show-button">Show Details</button></a>
-    <!-- add show details form-button thing to take to show page; move delete and edit buttons there -->
+    </p>
     <hr>
 </section>
 {% endfor %}

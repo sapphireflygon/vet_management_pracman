@@ -43,3 +43,10 @@ def update_vet(id):
 def delete_vet(id):
     vet_repo.delete(id)
     return redirect("/vets")
+
+# Show details of one vet --> show.html
+@vets_blueprint.route("/vets/<id>")
+def show_vet(id):
+    vet = vet_repo.select(id)
+    assigned_animals = vet_repo.all_animals_assigned_to_vet(vet)
+    return render_template("/vets/show.html", vet=vet, assigned_animals=assigned_animals)

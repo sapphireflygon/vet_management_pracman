@@ -52,12 +52,9 @@ def all_animals_owned_by_owner(owner):
     sql = "SELECT animals.* FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE owners.id = %s"
     values = [owner.id]
     results = run_sql(sql, values)
-    print(results)
 
     for result in results:
-        print(result)
         vet = vet_repo.select(result["vet_id"])
-        print(vet)
-        animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, None, result["id"])
+        animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, vet, result["id"])
         animals.append(animal)
     return animals

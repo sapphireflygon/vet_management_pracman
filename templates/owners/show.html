@@ -4,16 +4,17 @@
 
 <div>
     <p class="owner-name">
-        {{ owner.name }}
+        <h2>{{ owner.name }}</h2>
     </p>
-    <p>Contact Details: <br>
+    <p><h3>Contact Details:</h3>
         Phone Number: {{ owner.phone_number }} <br>
         Email: {{ owner.email }} <br>
         Address: {{ owner.address }} <br>
     </p>
     <a href="/owners/{{ owner.id }}/edit"><button class="edit-button">Edit Owner Details</button></a>
+    <hr>
     <p>
-        Registered Animals: <br>
+        <h3>Registered Animals:</h3>
         {% for animal in animals_owned %}
             Name: {{ animal.name }} <br>
             Species: {{ animal.species|title }}

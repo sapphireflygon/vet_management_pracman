@@ -1,5 +1,7 @@
 from db.run_sql import run_sql
 from models.vet import Vet
+from models.animal import Animal
+import repositories.owner_repo as owner_repo
 
 # List all vets in database
 def select_all():
@@ -44,3 +46,15 @@ def update(vet):
     values = [vet.name, vet.id]
     run_sql(sql, values)
 
+# List of all pets assigned to specific vet
+def all_animals_assigned_to_vet(vet):
+    animals = []
+    sql = "SELECT animals.* FROM animals INNER JOIN vets ON animals.vet_id = vets.id WHERE vets.id = %s"
+    values = [vet.id]
+    results = run_sql(sql, values)
+
+    for result in results:
+        owner = owner_repo.select(result["owner_id"])
+        animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, vet, result["id"])
+        animals.append(animal)
+    return animals

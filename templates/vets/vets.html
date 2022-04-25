@@ -9,13 +9,9 @@
 {% for vet in vets %}
 <section class="vets">
     <p>Dr. {{ vet.name }}</p>
-    <p id="all-animals-for-vet">
-    <!-- put link to list of all animals assigned to this vet here if possible -->
+    <p>
+        <a href="/vets/{{ vet.id }}"><button class="show-button">Show Details and Assigned Animals</button></a>
     </p>
-    <a href="/vets/{{ vet.id }}/edit"><button class="edit-button">Edit</button></a>
-    <form action="/vets/{{ vet.id }}/delete" method="POST">
-        <input type="submit" value="Delete Vet">
-    </form>
     <hr>
 </section>
 {% endfor %}
