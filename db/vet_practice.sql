@@ -21,6 +21,6 @@ CREATE TABLE animals (
     species VARCHAR(255),
     date_of_birth VARCHAR(255),
     owner_id INT NOT NULL REFERENCES owners(id) ON DELETE CASCADE,
-    vet_id INT NOT NULL REFERENCES vets(id), -- don't delete on cascade so if vet leaves business pets must be reassigned to a new vet if they're not leaving the practice
+    vet_id INT REFERENCES vets(id), -- don't delete on cascade and can be null so if vet leaves business pets can be reassigned to a new vet if they're not leaving the practice too
     treatment_notes TEXT
 );
