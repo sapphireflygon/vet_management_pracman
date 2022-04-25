@@ -11,7 +11,7 @@ def select_all():
     for result in results:
         owner = owner_repo.select(result["owner_id"])
         vet = vet_repo.select(result["vet_id"])
-        animal = Animal(result["species"], result["name"], result["date_of_birth"], owner, vet, result["id"])
+        animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, vet, result["id"])
         animals.append(animal)
     return animals
 
@@ -22,7 +22,7 @@ def select(id):
     result = run_sql(sql, values)[0]
     owner = owner_repo.select(result["owner_id"])
     vet = vet_repo.select(result["vet_id"])
-    animal = Animal(result["species"], result["name"], result["date_of_birth"], owner, vet, result["id"])
+    animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, vet, result["id"])
     return animal
 
 # Create new animal in database

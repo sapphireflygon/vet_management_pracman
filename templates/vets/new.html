@@ -2,6 +2,14 @@
 
 {% block content %}
 
-<!-- form to create new vet here -->
+<h2>Add New Vet</h2>
+
+<form class="new-vet-form" action="/vets" method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Vet Name" required>
+        <input type="submit">
+    </div>
+</form>
 
 {% endblock %}

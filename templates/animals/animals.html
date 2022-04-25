@@ -3,10 +3,13 @@
 {% block content %}
 
 <h2 id="animals-logo">All Animals</h2>
+<a href="/animals/new"><button>Add New Animal</button></a>
+<hr>
 
 {% for animal in animals %}
 <section class="animals">
     <p>Name: {{ animal.name }}</p>
+    <p>Species: {{ animal.species|title }}</p> <!-- COOL CODE THING I LEARNED DOING THIS: the |title will capitalise the first letter in the str variable on this display -->
     <p>Owner: {{ animal.owner.name }}
         <!-- link to owner details here -->
     </p>
