@@ -7,11 +7,12 @@
 {% for animal in animals %}
 <section class="animals">
     <p>Name: {{ animal.name }}</p>
-    <p>Owner: owner-name
+    <p>Owner: {{ animal.owner.name }}
         <!-- link to owner details here -->
     </p>
-    <p>Vet: vet-name</p>
+    <p>Vet: Dr. {{ animal.vet.name }}</p>
     <!-- add in form-submit button to link to show page that shows animal details, put edit and delete buttons there -->
+    <hr>
 </section>
 {% endfor %}
 
