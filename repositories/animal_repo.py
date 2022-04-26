@@ -10,9 +10,13 @@ def select_all():
     results = run_sql(sql)
     for result in results:
         owner = owner_repo.select(result["owner_id"])
-        vet = vet_repo.select(result["vet_id"])
-        animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, vet, result["id"])
-        animals.append(animal)
+        if result["vet_id"] == None:
+            animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, "No vet", result["id"])
+            animals.append(animal)
+        else:
+            vet = vet_repo.select(result["vet_id"])
+            animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, vet, result["id"])
+            animals.append(animal)
     return animals
 
 # Find one animal in database
@@ -21,8 +25,12 @@ def select(id):
     values = [id]
     result = run_sql(sql, values)[0]
     owner = owner_repo.select(result["owner_id"])
-    vet = vet_repo.select(result["vet_id"])
-    animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, vet, result["id"])
+    if result["vet_id"] == None:
+        animal = Animal(result["name"], result["species"], result["date_of_birth"], owner,  "No vet", result["id"])
+        print(animal.vet)
+    else:
+        vet = vet_repo.select(result["vet_id"])
+        animal = Animal(result["name"], result["species"], result["date_of_birth"], owner, vet, result["id"])
     return animal
 
 # Create new animal in database
@@ -46,15 +54,6 @@ def delete(id):
 
 # Update animal details
 def update(animal):
-    sql = "UPDATE animals SET (name, species, date_of_birth, owner, vet) = (%s, %s, %s, %s, %s) WHERE id=%s"
-    values = [animal.name, animal.species, animal.date_of_birth, animal.owner.id, animal.vet.id]
+    sql = "UPDATE animals SET (name, species, date_of_birth, owner_id, vet_id) = (%s, %s, %s, %s, %s) WHERE id=%s"
+    values = [animal.name, animal.species, animal.date_of_birth, animal.owner.id, animal.vet.id, animal.id]
     run_sql(sql, values)
-
-# Add treatment note to animal
-# def add_treatment(animal, date, treatment):
-#     sql = "UPDATE animals SET treatment_notes = %s WHERE id=%s"
-    
-#     values = [animal.treatment_notes, animal.id]
-#     run_sql(sql, values)
-    
-    # might be getting lost here... unsure if afctually need this fx... look at notes in animals_controlleer.py.....

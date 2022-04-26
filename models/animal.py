@@ -6,4 +6,3 @@ class Animal:
         self.date_of_birth = input_date_of_birth
         self.owner = owner
         self.vet = vet
-        self.treatment_notes = {}

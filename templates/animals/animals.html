@@ -10,10 +10,18 @@
 <section class="animals">
     <p>Name: {{ animal.name }}</p>
     <p>Species: {{ animal.species|title }}</p> <!-- COOL CODE THING I LEARNED DOING THIS: the |title will capitalise the first letter in the str variable on this display -->
-    <p>Owner: {{ animal.owner.name }}
-    </p>
-    <p>Vet: Dr. {{ animal.vet.name }}</p>
-    <a href="/animals/{{ animal.id }}"><button class="show-button">Show Details</button></a>
+    <p>Owner: {{ animal.owner.name }}</p>
+
+    {% if animal.vet == "No vet" %}
+        Please assign a vet to this animal by clicking the button below.<br>
+        <a href="/animals/{{ animal.id }}/edit"><button class="edit-button">Edit Animal Details</button></a>
+    {% else %}
+        Vet: Dr. {{ animal.vet.name }}
+        <br>
+        <a href="/animals/{{ animal.id }}"><button class="show-button">Show Details</button></a>
+    {% endif %}
+    <!-- <p>Vet: Dr. {{ animal.vet.name }}</p> -->
+
     <hr>
 </section>
 {% endfor %}

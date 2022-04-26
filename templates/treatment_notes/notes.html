@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ animal.name }}</h2>
+<p>
+    <a href="/animals/{{ animal.id }}/notes/new"><button>Add New Treatment Note</button></a>
+    <a href="/animals/{{ animal.id }}"><button class="back-button">Back to {{ animal.name}}'s Details</button></a>
+</p>
+<p>
+    <h3>Past Treatment Notes:</h3>
+    {% for treatment in treatment_notes %}
+        Date: {{ treatment.date }} <br>
+        Notes: {{ treatment.note }} <hr>
+    {% endfor %}
+</p>
+
+{% endblock %}

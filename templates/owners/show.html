@@ -17,7 +17,7 @@
         <h3>Registered Animals:</h3>
         {% for animal in animals_owned %}
             Name: {{ animal.name }} <br>
-            Species: {{ animal.species|title }}
+            Species: {{ animal.species|title }} <br>
             <a href="/animals/{{ animal.id }}"><button class="show-button">View Animal's Details</button></a>
             <hr>
         {% endfor %}
