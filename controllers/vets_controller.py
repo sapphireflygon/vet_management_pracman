@@ -9,12 +9,12 @@ vets_blueprint = Blueprint("vets", __name__)
 @vets_blueprint.route("/vets")
 def vets():
     vets = vet_repo.select_all()
-    return render_template("vets/vets.html", vets=vets)
+    return render_template("vets/vets.html", vets=vets, title="All Vets")
 
 # new.html
 @vets_blueprint.route("/vets/new")
 def new_vet():
-    return render_template("vets/new.html")
+    return render_template("vets/new.html", title="Create New Vet")
 
 # after form for new vet, redirect to vets.html with new vets list
 @vets_blueprint.route("/vets", methods=["POST"])
@@ -28,7 +28,7 @@ def create_vet():
 @vets_blueprint.route("/vets/<id>/edit")
 def edit_vet(id):
     vet = vet_repo.select(id)
-    return render_template("/vets/edit.html", vet=vet)
+    return render_template("/vets/edit.html", vet=vet, title=f"Edit {vet.name}'s Details")
 
 # Update vet's details after editing
 @vets_blueprint.route("/vets/<id>", methods=["POST"])
@@ -49,4 +49,4 @@ def delete_vet(id):
 def show_vet(id):
     vet = vet_repo.select(id)
     assigned_animals = vet_repo.all_animals_assigned_to_vet(vet)
-    return render_template("/vets/show.html", vet=vet, assigned_animals=assigned_animals)
+    return render_template("/vets/show.html", vet=vet, assigned_animals=assigned_animals, title=f"{vet.name}'s Details and Assigned Animals")

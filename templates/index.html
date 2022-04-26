@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Monoton&display=swap');
+    </style>
+    <title>PracMan - Your Veterinary Practice Manager</title>
 </head>
 <body>
-    <header>
-        <h1 id="main-logo">Vet Practice Manager</h1>
+    <header class="main-header">
+        <h1 id="main-logo">PracMan</h1>
+        <h2 id="main-tagline">Your Veterinary Practice Manager App!</h2>
     </header>
     <section class="main-buttons">
-        <a href="/vets" id="main-vets"><button>Manage Vets</button></a>
-        <a href="/animals" id="main-animals"><button>Manage Animals</button></a>
-        <a href="/owners" id="main-owners"><button>Manage Owners</button></a>
+        <a href="/vets"><button class="main" id="btn1">Manage Vets</button></a>
+        <a href="animals"><button class="main" id="btn2">Manage Animals</button></a>
+        <a href="/owners"><button class="main" id="btn3">Manage Owners</button></a>
     </section>
 </body>
+<footer class="main-footer">
+    <p class="banana">
+        Author: Jennifer Lane<br>
+        CodeClan E57 2022
+    </p>
+</footer>
 </html>

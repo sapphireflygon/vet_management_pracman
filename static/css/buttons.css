@@ -1,0 +1,36 @@
+/* css styling for all buttons/links in templates */
+.main {
+    width: 25%;
+    height: 10%;
+    border: none;
+    color: white;
+    padding: 5% 5%;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 150%;
+    margin: 1% 5%;
+    cursor: pointer;
+    border-radius: 15px;
+    grid-template-areas:
+    'vet ani own';
+}
+#btn1 {
+    grid-area: vet;
+}
+#btn2 {
+    grid-area: ani;
+}
+#btn3 {
+    grid-area: own;
+}
+#btn1, #btn2, #btn3 {
+    background-color: rgb(121, 168, 207);
+}
+
+#btn1:hover, #btn2:hover, #btn3:hover{
+    box-shadow: 0 7px 10px 0 #2f4764, 0 10px 20px 0 #2f476497
+}

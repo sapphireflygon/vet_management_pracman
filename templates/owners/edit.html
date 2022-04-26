@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Update Owner Details</h2>
+<h2 class="sub-logo">Update Owner Details</h2>
 
-<form action="/owners/{{ owner.id }}" method="POST">
+<form action="/owners/{{ owner.id }}" method="POST" id="edit-owner-form">
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{ owner.name }}">
+        <input type="text" class="type-name" name="name" value="{{ owner.name }}">
     </div>
     <div>
         <label for="email">Email Address:</label>
-        <input type="text" id="email" name="email" value="{{ owner.email }}"
+        <input type="text" class="type-email" name="email" value="{{ owner.email }}"
     </div>
     <div>
         <label for="phone_number">Phone Number:</label>
-        <input type="tel" id="phone_number" name="phone_number" value="{{ owner.phone_number }}"
+        <input type="tel" class="type-phone" name="phone_number" value="{{ owner.phone_number }}"
     </div>
     <div>
         <label for="address">Address:</label>
-        <input type="text" id="address" name="address" value="{{ owner.address }}">
+        <input type="text" class="type-address" name="address" value="{{ owner.address }}">
     </div>
-    <input type="submit" value="Update Owner">
+    <input type="submit" value="Update Owner" class="submit-button">
 </form>
 {% endblock %}

@@ -1,1 +1,54 @@
-/* css styling */
+/* index.html styling */
+.main-header {
+    background-color: steelblue;
+    color: white;
+    margin: 3% 5%;
+    padding: 8px;
+}
+
+#main-logo {
+    text-align: center;
+    font-size: 500%;
+    /* font-family: 'Cabin Sketch', cursive; */
+    font-family: 'Monoton', cursive;
+}
+
+#main-tagline {
+    text-align: center;
+    font-family: 'Monoton', cursive;
+}
+
+.main-footer {
+    background-color: steelblue;
+    padding: 20px;
+    margin: 3% 5%
+}
+
+/* base.html styling */
+.header {
+    background-color: steelblue;
+    padding: 20px;
+}
+
+.nav {
+    color: transparent
+}
+
+.link:link, .link:visited {
+    text-align: right;
+    color: black;
+    text-decoration: none;
+    margin: 10px;
+    padding: 8px;
+    border: none
+}
+
+.footer {
+    background-color: steelblue;
+    padding: 20px;
+}
+
+.banana{
+    color:white;
+    text-align: center;
+}

@@ -3,9 +3,7 @@
 {% block content %}
 
 <div>
-    <p class="owner-name">
-        <h2>{{ owner.name }}</h2>
-    </p>
+    <h2 class="sub-logo">{{ owner.name }}</h2>
     <p><h3>Contact Details:</h3>
         Phone Number: {{ owner.phone_number }} <br>
         Email: {{ owner.email }} <br>
@@ -21,9 +19,9 @@
             <a href="/animals/{{ animal.id }}"><button class="show-button">View Animal's Details</button></a>
             <hr>
         {% endfor %}
-    <a href="/animals/new"><button class="new-animal-button">Add New Animal</button></a>
+    <a href="/animals/new"><button class="add-button">Add New Animal</button></a>
     </p>
-    <form action="/owners/{{ owner.id }}/delete" method="POST">
+    <form action="/owners/{{ owner.id }}/delete" method="POST" class="delete-button">
         <input type="submit" value="Delete Owner">
     </form>
 </div>

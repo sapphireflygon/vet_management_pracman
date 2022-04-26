@@ -15,14 +15,14 @@ treatment_note_blueprint = Blueprint("treatment_note", __name__)
 def show_notes(id):
     animal = animal_repo.select(id)
     treatment_notes = note_repo.all_notes_for_one_animal(animal)
-    return render_template("/treatment_notes/notes.html", animal=animal, treatment_notes=treatment_notes)
+    return render_template("/treatment_notes/notes.html", animal=animal, treatment_notes=treatment_notes, title=f"{animal.name}'s Treatment Notes")
 
 # Create new treatment note --> add_treatment_notes.html
 @treatment_note_blueprint.route("/animals/<id>/notes/new")
 def new_treatment_note(id):
     animal = animal_repo.select(id)
     current_date = datetime.now() # COOL BIT OF CODE THANKS JOHN!
-    return render_template("/treatment_notes/add_treatment_notes.html", animal=animal, current_date=current_date)
+    return render_template("/treatment_notes/add_treatment_notes.html", animal=animal, current_date=current_date, title="Create New Treatment Note")
 
 # Update animal's treatment notes with new note from form --> redirect back to notes.html
 @treatment_note_blueprint.route("/animals/<id>/notes", methods=["POST"])

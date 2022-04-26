@@ -1,4 +1,5 @@
 from flask import Flask, Blueprint, render_template, request, redirect
+from datetime import datetime
 
 from models.animal import Animal
 import repositories.animal_repo as animal_repo
@@ -12,14 +13,15 @@ animals_blueprint = Blueprint("animals", __name__)
 def animals():
     animals = animal_repo.select_all()
     no_vet = None
-    return render_template("animals/animals.html", animals=animals, no_vet = no_vet)
+    return render_template("animals/animals.html", animals=animals, no_vet = no_vet, title="All Animals")
 
 # new.htm
 @animals_blueprint.route("/animals/new")
 def new_animal():
     owners = owner_repo.select_all()
     vets = vet_repo.select_all()
-    return render_template("/animals/new.html", owners=owners, vets=vets)
+    current_date = datetime.now()
+    return render_template("/animals/new.html", owners=owners, vets=vets, current_date=current_date, title="Create New Animal")
 
 # after form for new animal, redirect to list of animals --> change to show page for animal??
 @animals_blueprint.route("/animals", methods=["POST"])
@@ -41,7 +43,8 @@ def edit_animal(id):
     animal = animal_repo.select(id)
     vets = vet_repo.select_all()
     owners = owner_repo.select_all()
-    return render_template("/animals/edit.html", animal=animal, vets=vets, owners=owners)
+    current_date = datetime.now()
+    return render_template("/animals/edit.html", animal=animal, vets=vets, owners=owners, current_date=current_date, title=f"Edit {animal.name}'s Details")
 
 # Update animal's details after editing
 @animals_blueprint.route("/animals/<id>", methods=["POST"])
@@ -68,5 +71,5 @@ def delete_animal(id):
 def show_animal(id):
     animal = animal_repo.select(id)
     no_vet = None
-    return render_template("/animals/show.html", animal=animal, no_vet=no_vet)
+    return render_template("/animals/show.html", animal=animal, no_vet=no_vet, title=f"{animal.name}'s Details")
 

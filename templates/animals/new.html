@@ -2,16 +2,16 @@
 
 {% block content %}
 
-<h2>Add a New Pet</h2>
+<h2 class="sub-logo">Add a New Pet</h2>
 
-<form action="/animals" method="POST">
+<form action="/animals" method="POST" id="new-a-form">
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" class="type-name" name="name" required>
     </div>
     <div>
         <label for="species">Species:</label>
-        <select name="species" id="species" required>
+        <select name="species" class="select-species" required>
             <option value="" disabled selected>Select a species</option>
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
@@ -26,11 +26,11 @@
     </div>
     <div>
         <label for="date_of_birth">Date of Birth:</label>
-        <input type="date" id="date_of_birth" name="date_of_birth" required min="1920-01-01" max="2022-04-28"> <!-- hardcoded max date as presentation date as can't use javascript in this project to make it dynamically maxxed out to current date -->
+        <input type="date" class="pick-date_of_birth" name="date_of_birth" required min="1920-01-01" max="{{current_date}}">
     </div>
     <div>
         <label for="owner">Owner:</label>
-        <select name="owner_id" id="owner" required>
+        <select name="owner_id" class="select-o" required>
             <option value="" disabled selected>Select owner</option>
             {% for owner in owners %}
             <option value="{{ owner.id }}">
@@ -41,7 +41,7 @@
     </div>
     <div>
         <label for="vet">Vet:</label>
-        <select name="vet_id" id="vet" required>
+        <select name="vet_id" class="select-v" required>
             <option value="" disabled selected>Select Vet</option>
             {% for vet in vets %}
             <option value="{{ vet.id }}">
@@ -51,7 +51,7 @@
         </select>
     </div>
     <div>
-        <input type="submit">
+        <input type="submit" class="submit-button">
     </div>
 </form>
 

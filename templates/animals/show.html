@@ -3,9 +3,7 @@
 {% block content %}
 
 <div>
-    <p class="animal-name">
-        <h2>{{ animal.name }}</h2>
-    </p>
+    <h2 class="sub-logo">{{ animal.name }}</h2>
     <p>Species: {{ animal.species|title }}</p>
     <p>Date of Birth: {{ animal.date_of_birth }}</p>
     <p><a href="/animals/{{ animal.id }}/edit"><button class="edit-button">Edit Animal Details</button></a></p><hr>
@@ -19,7 +17,7 @@
         <a href="/owners/{{ animal.owner.id }}/edit"><button class="edit-button">Edit Owner Details</button></a>
     </p>
     <hr>
-    <form action="/animals/{{ animal.id }}/delete" method="POST">
+    <form action="/animals/{{ animal.id }}/delete" method="POST" class="delete-button">
         <input type="submit" value="Delete Animal">
     </form>
     <hr>
@@ -29,7 +27,7 @@
             Please assign a vet to this animal by clicking on the Edit Animal Details button above.
         {% else %}
             <h3>Vet: Dr. {{ animal.vet.name }}</h3>
-            <a href="/animals/{{ animal.id }}/notes"><button>View Treatment Notes</button></a>
+            <a href="/animals/{{ animal.id }}/notes"><button class="show-button">View Treatment Notes</button></a>
         {% endif %}
     </p>
     <p>

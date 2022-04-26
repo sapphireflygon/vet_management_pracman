@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h2>Add New Vet</h2>
+<h2 class="sub-logo">Add New Vet</h2>
 
-<form class="new-vet-form" action="/vets" method="POST">
+<form id="new-v-form" action="/vets" method="POST">
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Vet Name" required>
-        <input type="submit">
+        <input type="text" class="type-name" name="name" placeholder="Vet Name" required>
+        <input type="submit" class="submit-button">
     </div>
 </form>
 

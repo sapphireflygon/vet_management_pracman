@@ -9,12 +9,12 @@ owners_blueprint = Blueprint("owners", __name__)
 @owners_blueprint.route("/owners")
 def owners():
     owners = owner_repo.select_all()
-    return render_template("owners/owners.html", owners=owners)
+    return render_template("owners/owners.html", owners=owners, title="All Owners")
 
 # new.html
 @owners_blueprint.route("/owners/new")
 def new_owner():
-    return render_template("owners/new.html")
+    return render_template("owners/new.html", title="Create New Owner")
 
 # after form for new owner, redirect to owners.html with new owner added to list
 @owners_blueprint.route("/owners", methods=["POST"])
@@ -31,7 +31,7 @@ def create_owner():
 @owners_blueprint.route("/owners/<id>/edit")
 def edit_owner(id):
     owner = owner_repo.select(id)
-    return render_template("/owners/edit.html", owner=owner)
+    return render_template("/owners/edit.html", owner=owner, title=f"Edit {owner.name}'s Details")
 
 # Update owner's details after editing
 @owners_blueprint.route("/owners/<id>", methods=["POST"])
@@ -55,4 +55,4 @@ def delete_owner(id):
 def show_owner(id):
     owner = owner_repo.select(id)
     animals_owned = owner_repo.all_animals_owned_by_owner(owner)
-    return render_template("/owners/show.html", owner=owner, animals_owned=animals_owned)
+    return render_template("/owners/show.html", owner=owner, animals_owned=animals_owned, title=f"{owner.name}'s Details")

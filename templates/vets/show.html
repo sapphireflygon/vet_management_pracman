@@ -3,9 +3,7 @@
 {% block content %}
 
 <div>
-    <p class="vet-name">
-        <h2>Dr. {{ vet.name }}</h2>
-    </p>
+    <h2 class="sub-logo">Dr. {{ vet.name }}</h2>
     <a href="/vets/{{ vet.id }}/edit"><button class="edit-button">Edit Vet Details</button></a>
     <p>
         <h3>Assigned Animals:</h3>
@@ -16,9 +14,9 @@
             <!-- button to unassign animal from vet if possible?? -->
             <hr>
         {% endfor %}
-    <a href="/animals/new"><button class="new-animal-button">Add New Animal</button></a>
+    <a href="/animals/new"><button class="add-button">Add New Animal</button></a>
     </p>
-    <form action="/vets/{{ vet.id }}/delete" method="POST">
+    <form action="/vets/{{ vet.id }}/delete" method="POST" class="delete-button">
         <input type="submit" value="Delete Vet">
     </form>
 </div>

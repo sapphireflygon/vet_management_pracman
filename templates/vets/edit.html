@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Update Vet Details</h2>
+<h2 class="sub-logo">Update Vet Details</h2>
 
-<form action="/vets/{{ vet.id }}" method="POST">
+<form action="/vets/{{ vet.id }}" method="POST" id="edit-vet-form">
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{ vet.name }}">
-        <input type="submit" value="Update Vet">
+        <input type="text" class="type-name" name="name" value="{{ vet.name }}">
+        <input type="submit" value="Update Vet" class="submit-button">
     </div>
 </form>
 {% endblock %}
