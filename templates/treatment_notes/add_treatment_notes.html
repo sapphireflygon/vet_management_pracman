@@ -7,7 +7,7 @@
 <form action="/animals/{{ animal.id }}/notes" method="POST">
     <div>
         <label for="date">Date: </label>
-        <input type="date" name="date" min="2022-04-25" max="2022-04-28" required> <!-- hardcoded dates here within a few days because can't make dynamic due to constraints of project (can't use JavaScript)-->
+        <input type="date" name="date" min={{ current_date }} max={{ current_date }} value={{ current_date }} required> <!-- see if possible to make it so that user cannot even open calendar to select new date; maybe a CSS thing?? -->
     </div>
     <div>
         <label for="note">Notes: </label>

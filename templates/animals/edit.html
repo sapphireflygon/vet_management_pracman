@@ -11,7 +11,7 @@
     <div>
         <label for="species">Species:</label>
         <select name="species" id="species" required>
-            <option value="" disabled selected>Select a species</option> <!-- if possible change this to auto select the current species -->
+            <option value="{{ animal.species }}" >{{ animal.species|title }}</option>
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
             <option value="rabbit">Rabbit</option>
@@ -30,9 +30,8 @@
     <div>
         <label for="owner">Owner:</label>
         <select name="owner_id" id="owner" required>
-            <option value="" disabled selected>Select owner</option> <!-- if possible change this to auto select the current owner -->
             {% for owner in owners %}
-            <option value="{{ owner.id }}">
+            <option value="{{ owner.id }}" {% if owner.id == animal.owner.id %} selected {% endif %}>
                 {{ owner.name }}
             </option>
             {% endfor %}
@@ -41,9 +40,8 @@
     <div>
         <label for="vet">Vet:</label>
         <select name="vet_id" id="vet" required>
-            <option value="" disabled selected>Select Vet</option> <!-- if possible change this to auto select the current vet -->
             {% for vet in vets %}
-            <option value="{{ vet.id }}">
+            <option value="{{ vet.id }}" {% if vet.id == animal.vet.id %} selected {% endif %}>
                 {{ vet.name }}
             </option>
             {% endfor %}

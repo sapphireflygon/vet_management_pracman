@@ -36,7 +36,7 @@ def update_vet(id):
     name = request.form["name"]
     vet = Vet(name, id)
     vet_repo.update(vet)
-    return redirect("/vets")
+    return redirect(f"/vets/{id}")
 
 # Delete vet from system
 @vets_blueprint.route("/vets/<id>/delete", methods=["POST"])

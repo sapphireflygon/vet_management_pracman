@@ -42,7 +42,7 @@ def update_owner(id):
     address = request.form["address"]
     owner = Owner(name, phone_number, email, address, id)
     owner_repo.update(owner)
-    return redirect("/owners")
+    return redirect(f"/owners/{id}")
 
 # Delete owner from system
 @owners_blueprint.route("/owners/<id>/delete", methods=["POST"])

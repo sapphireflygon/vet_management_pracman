@@ -1,4 +1,5 @@
 from db.run_sql import run_sql
+from datetime import datetime
 from models.animal import Animal
 from models.treatment_note import TreatmentNote
 import repositories.treatment_note_repo as note_repo
@@ -13,7 +14,7 @@ def all_notes_for_one_animal(animal):
     for result in results:
         note = TreatmentNote(result["date"], result["note"], animal)
         notes.append(note)
-    return reversed(notes)
+    return reversed(notes) # Makes the notes appear in descending order from most recent to oldest
 
 # Save new treatment note to the database
 def save(treatment_note):

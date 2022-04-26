@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, Blueprint, render_template, request, redirect
 \
 from models.animal import Animal
@@ -20,7 +21,8 @@ def show_notes(id):
 @treatment_note_blueprint.route("/animals/<id>/notes/new")
 def new_treatment_note(id):
     animal = animal_repo.select(id)
-    return render_template("/treatment_notes/add_treatment_notes.html", animal=animal)
+    current_date = datetime.now() # COOL BIT OF CODE THANKS JOHN!
+    return render_template("/treatment_notes/add_treatment_notes.html", animal=animal, current_date=current_date)
 
 # Update animal's treatment notes with new note from form --> redirect back to notes.html
 @treatment_note_blueprint.route("/animals/<id>/notes", methods=["POST"])
@@ -32,4 +34,4 @@ def update_treatment_notes(id):
     new_note = TreatmentNote(date, note, animal)
     print(new_note)
     note_repo.save(new_note)
-    return redirect(F"/animals/{id}/notes") # REALLY COOL THANK ELIN & JOHN FOR TEACHING ME ABOUT fstrings in routes/redirects!
+    return redirect(f"/animals/{id}/notes") # REALLY COOL THANK ELIN & JOHN FOR TEACHING ME ABOUT fstrings in routes/redirects!
