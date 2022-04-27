@@ -15,7 +15,7 @@ def animals():
     no_vet = None
     return render_template("animals/animals.html", animals=animals, no_vet = no_vet, title="Manage Animals")
 
-# new.htm
+# new.html
 @animals_blueprint.route("/animals/new")
 def new_animal():
     owners = owner_repo.select_all()
@@ -23,7 +23,7 @@ def new_animal():
     current_date = datetime.now()
     return render_template("/animals/new.html", owners=owners, vets=vets, current_date=current_date, title="Create New Animal")
 
-# after form for new animal, redirect to list of animals --> change to show page for animal??
+# After form to create a new animal, redirect to that animal's details page
 @animals_blueprint.route("/animals", methods=["POST"])
 def create_animal():
     name = request.form["name"]
@@ -37,7 +37,7 @@ def create_animal():
     animal_repo.save(new_animal)
     return redirect(f"/animals/{new_animal.id}")
 
-# Edit animal's details
+# Edit animal's details --> edit.html
 @animals_blueprint.route("/animals/<id>/edit")
 def edit_animal(id):
     animal = animal_repo.select(id)

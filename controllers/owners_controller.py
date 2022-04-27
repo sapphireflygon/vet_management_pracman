@@ -16,7 +16,7 @@ def owners():
 def new_owner():
     return render_template("owners/new.html", title="Create New Owner")
 
-# after form for new owner, redirect to owners.html with new owner added to list
+# After form to create a new owner, redirect to the newly created owner's details page --> show.html
 @owners_blueprint.route("/owners", methods=["POST"])
 def create_owner():
     name = request.form["name"]
@@ -25,7 +25,7 @@ def create_owner():
     address = request.form["address"]
     new_owner = Owner(name, phone_number, email, address)
     owner_repo.save(new_owner)
-    return redirect("/owners")
+    return redirect(f"/owners/{new_owner.id}")
 
 # Edit owner's details --> edit.html
 @owners_blueprint.route("/owners/<id>/edit")
@@ -44,7 +44,7 @@ def update_owner(id):
     owner_repo.update(owner)
     return redirect(f"/owners/{id}")
 
-# Delete owner from system
+# Delete owner from database
 @owners_blueprint.route("/owners/<id>/delete", methods=["POST"])
 def delete_owner(id):
     owner_repo.delete(id)

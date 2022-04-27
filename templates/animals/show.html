@@ -23,8 +23,8 @@
     <hr>
     <p>
         {% if animal.vet == "No vet" %}
-            NO VET ASSIGNED! <br>
-            Please assign a vet to this animal by clicking on the Edit Animal Details button above.
+            <br>
+            Please assign a vet to this animal by clicking on the Edit Animal Details button at the top of this page.
         {% else %}
             <h3>Vet: Dr. {{ animal.vet.name }}</h3>
             <a href="/animals/{{ animal.id }}/notes"><button class="show-button">View Treatment Notes</button></a>

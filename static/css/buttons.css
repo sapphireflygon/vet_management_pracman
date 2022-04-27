@@ -38,6 +38,6 @@
     margin: 25px
 }
 
-.show-button, .edit-button, .submit-button, .add-button, .delete-button {
+.show-button, .edit-button, .submit-button, .add-button {
     cursor: pointer;
 }

@@ -16,15 +16,15 @@ def vets():
 def new_vet():
     return render_template("vets/new.html", title="Create New Vet")
 
-# after form for new vet, redirect to vets.html with new vets list
+# After form to create a new vet, redirect to the new vet's details page --> show.html
 @vets_blueprint.route("/vets", methods=["POST"])
 def create_vet():
     name = request.form["name"]
     new_vet = Vet(name)
     vet_repo.save(new_vet)
-    return redirect("/vets")
+    return redirect(f"/vets/{new_vet.id}")
 
-# Edit vet's details
+# Edit vet's details --> edit.html
 @vets_blueprint.route("/vets/<id>/edit")
 def edit_vet(id):
     vet = vet_repo.select(id)
