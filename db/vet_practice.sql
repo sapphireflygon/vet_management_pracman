@@ -11,7 +11,7 @@ CREATE TABLE vets (
 CREATE TABLE owners (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    phone_number VARCHAR(11), -- maybe figure out better data type for storage later if possible?
+    phone_number VARCHAR(11),
     email VARCHAR(255),
     address VARCHAR(255)
 );
@@ -22,7 +22,7 @@ CREATE TABLE animals (
     species VARCHAR(255),
     date_of_birth VARCHAR(10),
     owner_id INT NOT NULL REFERENCES owners(id) ON DELETE CASCADE,
-    vet_id INT REFERENCES vets(id) ON DELETE SET NULL -- don't delete on cascade, insteade ON DELETE SET NULL as can be null so if vet leaves business pets can be reassigned to a new vet if they're not leaving the practice too
+    vet_id INT REFERENCES vets(id) ON DELETE SET NULL
 );
 
 CREATE TABLE treatment_notes (

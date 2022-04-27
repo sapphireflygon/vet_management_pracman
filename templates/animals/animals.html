@@ -8,9 +8,9 @@
 
 {% for animal in animals %}
 <section class="animals">
-    <p>Name: {{ animal.name }}<br>
+    <p>Name: {{ animal.name|title }}<br>
     Species: {{ animal.species|title }}<br>
-    Owner: {{ animal.owner.name }}</p>
+    Owner: {{ animal.owner.name}}</p>
 
     {% if animal.vet == "No vet" %}
         Please assign a vet to this animal by clicking the button below.<br>
@@ -18,7 +18,7 @@
     {% else %}
         Vet: Dr. {{ animal.vet.name }}
         <br>
-        <a href="/animals/{{ animal.id }}"><button class="show-button">Show {{ animal.name }}'s Details</button></a>
+        <a href="/animals/{{ animal.id }}"><button class="show-button">Show {{ animal.name|title }}'s Details</button></a>
     {% endif %}
     
     <hr>

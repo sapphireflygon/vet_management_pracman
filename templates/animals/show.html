@@ -3,7 +3,7 @@
 {% block content %}
 
 <div>
-    <h2 class="sub-logo">{{ animal.name }} the {{ animal.species }}</h2>
+    <h2 class="sub-logo">{{ animal.name|title }} the {{ animal.species }}</h2>
     <p>Date of Birth: {{ animal.date_of_birth }}</p>
     <p><a href="/animals/{{ animal.id }}/edit"><button class="edit-button">Edit Animal Details</button></a></p><hr>
     <p>
@@ -16,7 +16,7 @@
         <a href="/owners/{{ animal.owner.id }}/edit"><button class="edit-button">Edit Owner Details</button></a>
     </p>
     <hr>
-    To Remove {{ animal.name }}'s Records from the System:
+    To Remove {{ animal.name|title }}'s Records from the System:
     <form action="/animals/{{ animal.id }}/delete" method="POST" class="delete-button">
         <input type="submit" value="Delete Animal">
     </form>

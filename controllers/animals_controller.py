@@ -35,7 +35,7 @@ def create_animal():
     vet = vet_repo.select(vet_id)
     new_animal = Animal(name, species, date_of_birth, owner, vet)
     animal_repo.save(new_animal)
-    return redirect("/animals")
+    return redirect(f"/animals/{new_animal.id}")
 
 # Edit animal's details
 @animals_blueprint.route("/animals/<id>/edit")

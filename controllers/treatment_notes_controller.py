@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import Flask, Blueprint, render_template, request, redirect
-\
+
 from models.animal import Animal
 from models.treatment_note import TreatmentNote
 import repositories.animal_repo as animal_repo
