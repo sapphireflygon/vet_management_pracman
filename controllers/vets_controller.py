@@ -9,7 +9,7 @@ vets_blueprint = Blueprint("vets", __name__)
 @vets_blueprint.route("/vets")
 def vets():
     vets = vet_repo.select_all()
-    return render_template("vets/vets.html", vets=vets, title="All Vets")
+    return render_template("vets/vets.html", vets=vets, title="Manage Vets")
 
 # new.html
 @vets_blueprint.route("/vets/new")

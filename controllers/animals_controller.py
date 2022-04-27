@@ -13,7 +13,7 @@ animals_blueprint = Blueprint("animals", __name__)
 def animals():
     animals = animal_repo.select_all()
     no_vet = None
-    return render_template("animals/animals.html", animals=animals, no_vet = no_vet, title="All Animals")
+    return render_template("animals/animals.html", animals=animals, no_vet = no_vet, title="Manage Animals")
 
 # new.htm
 @animals_blueprint.route("/animals/new")

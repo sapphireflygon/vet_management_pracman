@@ -9,7 +9,7 @@ owners_blueprint = Blueprint("owners", __name__)
 @owners_blueprint.route("/owners")
 def owners():
     owners = owner_repo.select_all()
-    return render_template("owners/owners.html", owners=owners, title="All Owners")
+    return render_template("owners/owners.html", owners=owners, title="Manage Owners")
 
 # new.html
 @owners_blueprint.route("/owners/new")
