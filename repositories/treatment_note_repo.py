@@ -14,7 +14,7 @@ def all_notes_for_one_animal(animal):
     for result in results:
         note = TreatmentNote(result["date"], result["note"], animal)
         notes.append(note)
-    return reversed(notes) # Makes the notes appear in descending order from most recent to oldest
+    return reversed(notes)
 
 # Save new treatment note to the database
 def save(treatment_note):
@@ -23,3 +23,4 @@ def save(treatment_note):
     result = run_sql(sql, values)
     id = result[0]["id"]
     treatment_note.id = id
+

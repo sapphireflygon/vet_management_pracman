@@ -2,18 +2,22 @@
 
 {% block content %}
 
-<h2>{{ animal.name }}</h2>
+<h2>{{ animal.name }}'s Treatment</h2>
 <h3>New Treatment Note:</h3>
 <form action="/animals/{{ animal.id }}/notes" method="POST" id="new-tnote-form">
     <div>
         <label for="date">Date: </label>
-        <input type="date" id="tnote-form-date" name="date" min={{ current_date }} max={{ current_date }} value={{ current_date }} required> <!-- see if possible to make it so that user cannot even open calendar to select new date; maybe a CSS thing?? -->
+        <input type="date" id="tnote-form-date" name="date"  value={{ current_date }} required>
     </div>
-    <div>
+    <br>
+    <div class="type-tnote">
         <label for="note">Notes: </label>
-        <input type="text" id="type-tnote" name="note" placeholder="Write notes here." required>
+        <br>
+        <textarea id="type" name="note" placeholder="Write treatment notes here." rows="17" cols="90" required></textarea>
     </div>
+    <br>
     <input type="submit" value="Add Note to Record" class="submit-button">
+    <br>
 </form>
 
 {% endblock %}

@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<h2 class="sub-logo">All Animals</h2>
+<h2 class="sub-logo">Manage Animals</h2>
 <a href="/animals/new"><button class="add-button">Add New Animal</button></a>
 <hr>
 
 {% for animal in animals %}
 <section class="animals">
-    <p>Name: {{ animal.name }}</p>
-    <p>Species: {{ animal.species|title }}</p> <!-- COOL CODE THING I LEARNED DOING THIS: the |title will capitalise the first letter in the str variable on this display -->
-    <p>Owner: {{ animal.owner.name }}</p>
+    <p>Name: {{ animal.name }}<br>
+    Species: {{ animal.species|title }}<br>
+    Owner: {{ animal.owner.name }}</p>
 
     {% if animal.vet == "No vet" %}
         Please assign a vet to this animal by clicking the button below.<br>
@@ -18,7 +18,7 @@
     {% else %}
         Vet: Dr. {{ animal.vet.name }}
         <br>
-        <a href="/animals/{{ animal.id }}"><button class="show-button">Show Details</button></a>
+        <a href="/animals/{{ animal.id }}"><button class="show-button">Show {{ animal.name }}'s Details</button></a>
     {% endif %}
     
     <hr>

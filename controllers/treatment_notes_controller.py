@@ -21,7 +21,7 @@ def show_notes(id):
 @treatment_note_blueprint.route("/animals/<id>/notes/new")
 def new_treatment_note(id):
     animal = animal_repo.select(id)
-    current_date = datetime.now() # COOL BIT OF CODE THANKS JOHN!
+    current_date = datetime.now()
     return render_template("/treatment_notes/add_treatment_notes.html", animal=animal, current_date=current_date, title="Create New Treatment Note")
 
 # Update animal's treatment notes with new note from form --> redirect back to notes.html
@@ -34,4 +34,5 @@ def update_treatment_notes(id):
     new_note = TreatmentNote(date, note, animal)
     print(new_note)
     note_repo.save(new_note)
-    return redirect(f"/animals/{id}/notes") # REALLY COOL THANK ELIN & JOHN FOR TEACHING ME ABOUT fstrings in routes/redirects!
+    return redirect(f"/animals/{id}/notes")
+

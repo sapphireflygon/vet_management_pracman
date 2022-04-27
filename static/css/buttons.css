@@ -1,36 +1,43 @@
 /* css styling for all buttons/links in templates */
 .main {
-    width: 25%;
-    height: 10%;
     border: none;
     color: white;
-    padding: 5% 5%;
+    padding: 40px;
     text-align: center;
     text-decoration: none;
-    align-items: center;
-    justify-content: center;
-    display: grid;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 150%;
-    margin: 1% 5%;
-    cursor: pointer;
     border-radius: 15px;
-    grid-template-areas:
-    'vet ani own';
 }
-#btn1 {
-    grid-area: vet;
+
+.main-buttons {
+    display: flex;
+    flex-flow: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
 }
-#btn2 {
-    grid-area: ani;
-}
-#btn3 {
-    grid-area: own;
-}
+
 #btn1, #btn2, #btn3 {
     background-color: rgb(121, 168, 207);
+    font-size: 25px;
+    text-shadow: 1px 1px 2px #000000;
 }
 
 #btn1:hover, #btn2:hover, #btn3:hover{
-    box-shadow: 0 7px 10px 0 #2f4764, 0 10px 20px 0 #2f476497
+    box-shadow: 0 7px 10px 0 #2f4764, 0 10px 20px 0 #2f476497;
+    cursor: pointer;
+}
+
+.show-button, .edit-button, .submit-button, .add-button{
+    margin: 15px;
+}
+
+.delete-button {
+    margin: 25px
+}
+
+.show-button, .edit-button, .submit-button, .add-button, .delete-button {
+    cursor: pointer;
 }

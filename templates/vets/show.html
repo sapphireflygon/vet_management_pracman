@@ -9,13 +9,16 @@
         <h3>Assigned Animals:</h3>
         {% for animal in assigned_animals %}
             Name: {{ animal.name }} <br>
-            Species: {{ animal.species|title }}
+            Species: {{ animal.species|title }}<br>
             <a href="/animals/{{ animal.id }}"><button class="show-button">View Animal's Details</button></a>
             <!-- button to unassign animal from vet if possible?? -->
             <hr>
         {% endfor %}
+    <p>Create a New Animal:<br>
     <a href="/animals/new"><button class="add-button">Add New Animal</button></a>
     </p>
+    <hr>
+    To REMOVE this Vet from the System:
     <form action="/vets/{{ vet.id }}/delete" method="POST" class="delete-button">
         <input type="submit" value="Delete Vet">
     </form>

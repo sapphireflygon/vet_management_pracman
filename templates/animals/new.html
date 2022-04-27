@@ -9,10 +9,11 @@
         <label for="name">Name:</label>
         <input type="text" class="type-name" name="name" required>
     </div>
+    <br>
     <div>
         <label for="species">Species:</label>
         <select name="species" class="select-species" required>
-            <option value="" disabled selected>Select a species</option>
+            <option value="" disabled selected>Select Species</option>
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
             <option value="rabbit">Rabbit</option>
@@ -24,14 +25,16 @@
             <option value="chinchilla">Chinchilla</option>
         </select>
     </div>
+    <br>
     <div>
         <label for="date_of_birth">Date of Birth:</label>
-        <input type="date" class="pick-date_of_birth" name="date_of_birth" required min="1920-01-01" max="{{current_date}}">
+        <input type="date" class="pick-date_of_birth" name="date_of_birth" required max={{current_date}}>
     </div>
+    <br>
     <div>
         <label for="owner">Owner:</label>
         <select name="owner_id" class="select-o" required>
-            <option value="" disabled selected>Select owner</option>
+            <option value="" disabled selected>Select Owner</option>
             {% for owner in owners %}
             <option value="{{ owner.id }}">
                 {{ owner.name }}
@@ -39,6 +42,7 @@
             {% endfor %}
         </select>
     </div>
+    <br>
     <div>
         <label for="vet">Vet:</label>
         <select name="vet_id" class="select-v" required>
@@ -50,6 +54,7 @@
             {% endfor %}
         </select>
     </div>
+    <br>
     <div>
         <input type="submit" class="submit-button">
     </div>

@@ -19,8 +19,11 @@
             <a href="/animals/{{ animal.id }}"><button class="show-button">View Animal's Details</button></a>
             <hr>
         {% endfor %}
+    To Create a New Animal:<br>
     <a href="/animals/new"><button class="add-button">Add New Animal</button></a>
     </p>
+    <hr>
+    To Remove this Owner's Record AND Simultaneously Remove All Records for this Owner's Animals:
     <form action="/owners/{{ owner.id }}/delete" method="POST" class="delete-button">
         <input type="submit" value="Delete Owner">
     </form>

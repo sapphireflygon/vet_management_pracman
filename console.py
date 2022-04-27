@@ -1,5 +1,3 @@
-import pdb
-
 from models.animal import Animal
 import repositories.animal_repo as animal_repo
 
@@ -37,19 +35,7 @@ animal_repo.save(animal3)
 animal4 = Animal("Abed", "reptile", "2020-04-01", owner2, vet2)
 animal_repo.save(animal4)
 
-note1 = TreatmentNote("2022-04-25", "Note goes here woop", animal1)
+note1 = TreatmentNote("2022-04-25", "Note goes here.", animal1)
 note_repo.save(note1)
-
-# animal_repo.delete(animal2.id)
-# owner_repo.delete(owner2.id)
-# vet_repo.delete(vet3.id)
-
-# vet_repo.select_all()
-# animal_repo.select_all()
-# owner_repo.select_all()
-
-# vet_repo.select(vet1.id)
-# owner_repo.select(owner2.id)
-# animal_repo.select(animal3.id)
-
-# pdb.set_trace()
+note2 = TreatmentNote("2022-04-03", "This is a note example.", animal2)
+note_repo.save(note2)
