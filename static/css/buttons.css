@@ -32,12 +32,30 @@
 
 .show-button, .edit-button, .submit-button, .add-button{
     margin: 15px;
+    padding: 0.25em;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.show-button {
+    background-color: rgb(193, 224, 251);
 }
 
 .delete-button {
-    margin: 25px
+    padding: 0.5em;
+    border-radius: 10px;
+    font-size: 16px;
+    color: white;
+    text-shadow: 1px 1px 1px #000000;
+    background-color: rgb(249, 45, 45);
+    margin: 25px;
+    border: 1px solid black;
 }
 
-.show-button, .edit-button, .submit-button, .add-button {
+.delete-button:active {
+    transform: translateY(4px);
+}
+
+.show-button:hover, .edit-button:hover, .submit-button:hover, .add-button:hover .delete-button:hover{
     cursor: pointer;
 }

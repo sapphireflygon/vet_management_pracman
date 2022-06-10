@@ -12,13 +12,13 @@
             Phone Number: {{ animal.owner.phone_number }} <br>
             Email: {{ animal.owner.email }} <br>
             Address: {{ animal.owner.address }} <br>
-        <a href="/owners/{{ animal.owner.id }}"><button class="edit-button">View Owner Details</button></a><br>
+        <a href="/owners/{{ animal.owner.id }}"><button class="show-button">View Owner Details</button></a><br>
         <a href="/owners/{{ animal.owner.id }}/edit"><button class="edit-button">Edit Owner Details</button></a>
     </p>
     <hr>
     To Remove {{ animal.name|title }}'s Records from the System:
-    <form action="/animals/{{ animal.id }}/delete" method="POST" class="delete-button">
-        <input type="submit" value="Delete Animal">
+    <form action="/animals/{{ animal.id }}/delete" method="POST">
+        <input type="submit" value="Delete Animal" class="delete-button">
     </form>
     <hr>
     <p>
