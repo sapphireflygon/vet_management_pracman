@@ -46,7 +46,7 @@ def update(vet):
     values = [vet.name, vet.id]
     run_sql(sql, values)
 
-# List of all pets assigned to specific vet
+# List of all pets assigned to specific vet:
 def all_animals_assigned_to_vet(vet):
     animals = []
     sql = "SELECT animals.* FROM animals INNER JOIN vets ON animals.vet_id = vets.id WHERE vets.id = %s"
